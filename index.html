@@ -60,19 +60,22 @@
         const videoPlayer = document.getElementById('videoPlayer');
 
         fileInput.addEventListener('change', function(event) {
-            const file = event.target.files[0];
-            const url = URL.createObjectURL(file);
+    const file = event.target.files[0];
+    const url = URL.createObjectURL(file);
 
-            if (file.type.startsWith('audio')) {
-                audioPlayer.src = url;
-                audioPlayer.style.display = 'block';
-                videoPlayer.style.display = 'none';
-            } else if (file.type.startsWith('video')) {
-                videoPlayer.src = url;
-                videoPlayer.style.display = 'block';
-                audioPlayer.style.display = 'none';
-            }
-        });
+    if (file.type.startsWith('audio')) {
+        audioPlayer.src = url;
+        audioPlayer.style.display = 'block';
+        videoPlayer.style.display = 'none';
+    } else if (file.type.startsWith('video')) {
+        videoPlayer.src = url;
+        videoPlayer.style.display = 'block';
+        audioPlayer.style.display = 'none';
+    }
+
+    // Restablecer el valor del input de archivo
+    fileInput.value = '';
+});
     </script>
 </body>
 </html>
