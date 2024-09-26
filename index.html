@@ -52,7 +52,9 @@
         <input type="file" id="fileInput" class="upload-btn" accept="audio/*,video/*">
         <audio id="audioPlayer" class="player" controls style="display: none;"></audio>
         <video id="videoPlayer" class="player" controls style="display: none;"></video>
-        <h5>Hecho por Mati555</h5>
+        <h6></h6>
+        <button onclick="location.reload()">Cambiar archivo (Reiniciar Reproductor)</button>
+        <h5>Hecho por Mati555.</h5>
     </div>
 
     <script>
@@ -63,9 +65,6 @@
         fileInput.addEventListener('change', function(event) {
     const file = event.target.files[0];
     const url = URL.createObjectURL(file);
-
-    // Restablecer el valor del input de archivo
-    fileInput.value = '';
             
     if (file.type.startsWith('audio')) {
         audioPlayer.src = url;
