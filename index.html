@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reproductor de Audio y Video</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 90%;
+            max-width: 600px;
+        }
+        .upload-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 20px 0;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .upload-btn:hover {
+            background-color: #0056b3;
+        }
+        .player {
+            width: 100%;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Reproductor de Audio y Video</h1>
+        <input type="file" id="fileInput" class="upload-btn" accept="audio/*,video/*">
+        <audio id="audioPlayer" class="player" controls style="display: none;"></audio>
+        <video id="videoPlayer" class="player" controls style="display: none;"></video>
+    </div>
+
+    <script>
+        const fileInput = document.getElementById('fileInput');
+        const audioPlayer = document.getElementById('audioPlayer');
+        const videoPlayer = document.getElementById('videoPlayer');
+
+        fileInput.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            const url = URL.createObjectURL(file);
+
+            if (file.type.startsWith('audio')) {
+                audioPlayer.src = url;
+                audioPlayer.style.display = 'block';
+                videoPlayer.style.display = 'none';
+            } else if (file.type.startsWith('video')) {
+                videoPlayer.src = url;
+                videoPlayer.style.display = 'block';
+                audioPlayer.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
