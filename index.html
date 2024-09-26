@@ -63,6 +63,9 @@
     const file = event.target.files[0];
     const url = URL.createObjectURL(file);
 
+    // Restablecer el valor del input de archivo
+    fileInput.value = '';
+            
     if (file.type.startsWith('audio')) {
         audioPlayer.src = url;
         audioPlayer.style.display = 'block';
@@ -72,9 +75,6 @@
         videoPlayer.style.display = 'block';
         audioPlayer.style.display = 'none';
     }
-
-    // Restablecer el valor del input de archivo
-    fileInput.value = '';
 });
     </script>
 </body>
